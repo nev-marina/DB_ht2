@@ -22,9 +22,10 @@ album_name text not null,
 album_year integer not null,
 );
 create table if not exists song (
-id integer primary key references album_art(id),
+id serial primary key,
 song_name text not null,
-duration interval minute to second not null
+duration interval minute to second not null,
+album_id integer references album_art(id)
 );
 create table if not exists song_collection (
 song_id integer references song(id),
